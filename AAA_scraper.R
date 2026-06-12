@@ -44,7 +44,7 @@ scrape_state_metros <- function(state_code) {
     extract_row <- function(row) {
       tds <- row %>% html_nodes("td") %>% html_text(trim = TRUE)
       if (length(tds) < 5) return(rep(NA_real_, 4))
-      parse_number(tds[2:5])
+      round(parse_number(tds[2:5]), 2)
     }
 
     current   <- extract_row(rows[[1]])
